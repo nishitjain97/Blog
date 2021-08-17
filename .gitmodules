@@ -1,0 +1,7 @@
+[submodule "ml_journey_blog/public"]
+	path = ml_journey_blog/public
+	url = https://github.com/nishitjain97/nishitjain97.github.io.git
+	branch = main
+[submodule "ml_journey_blog/themes/eureka"]
+	path = ml_journey_blog/themes/eureka
+	url = https://github.com/wangchucheng/hugo-eureka.git
