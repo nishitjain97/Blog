@@ -258,7 +258,7 @@ x + 2y + z = 2 \\
 
     - These can be formed by doing the target operation on an identity matrix
 
-    - Eg. to exchange row 1 and row 2 of a 2 X 2 matrix, exchange row 1 and row 2 of identity matrix to get the required permutation matrix
+    - Eg. to exchange row 1 and row 2 of a $2 \times 2$ matrix, exchange row 1 and row 2 of identity matrix to get the required permutation matrix
     <div>
     \[
         \begin{bmatrix} 

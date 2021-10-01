@@ -12,9 +12,9 @@ lastmod: '2021-03-02'
 
 ## Methods of Matrix Multiplication
 
-- Two matrices $A$ (m X n) and $B$ (p X r) can be multiplied to give matrix $C$ iff the number of columns of $A$ match the number of rows of $B$ (n = p)
+- Two matrices $A$ ($m \times n$) and $B$ ($p \times r$) can be multiplied to give matrix $C$ iff the number of columns of $A$ match the number of rows of $B$ (n = p)
 
-    - $C$ will have the shape (m X r)
+    - $C$ will have the shape ($m \times r$)
 
 ### Method 1: Multiplication by elements
 
@@ -74,7 +74,7 @@ lastmod: '2021-03-02'
 
         - However, $X \neq 0$, which is contradictory to the original assumption
 
-- Inverting square matrix of size n X n is equivalent to simultaneously solving $n$ systems of $n$ linear equations. 
+- Inverting square matrix of size $n \times n$ is equivalent to simultaneously solving $n$ systems of $n$ linear equations. 
 
     - Eg. $AA^{-1} = I$
     <div>

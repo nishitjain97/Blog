@@ -99,3 +99,24 @@ lastmod: '2021-03-02'
     </div>
 
     - zero vector by itself
+
+### Subspaces from Matrices
+
+- We can derive important subspaces from a matrix
+
+#### Type 1: Column Space
+
+- We take the columns of a matrix and all their linear combinations to get the **column space**, $C(A)$
+
+    - E.g. the following matrix has a column space that lies in $R^3$ and is made up of the columns of this matrix and all their linear combinations 
+    <div>
+    \[
+        \begin{bmatrix}
+        1 & 3 \\
+        2 & 3 \\
+        4 & 1
+        \end{bmatrix}
+    \]
+    </div>
+
+    - **Note:** For this example, the $C(A)$ would be a plane in 3-D space

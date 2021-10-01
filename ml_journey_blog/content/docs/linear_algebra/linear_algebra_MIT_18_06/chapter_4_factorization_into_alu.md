@@ -134,7 +134,7 @@ lastmod: '2021-03-02'
 
 ## Expense of Elimination Process
 
-- The cost of performing elimination for an n X n matrix
+- The cost of performing elimination for an $n \times n$ matrix
 
     - $T(n) = n^2 + T(n-1)$
 
@@ -142,7 +142,7 @@ lastmod: '2021-03-02'
 
 ## Permutations
 
-- For n X n matrices, there are n! permutation matrices
+- For $n \times n$ matrices, there are n! permutation matrices
 
 - Two exchange any two rows, take the identity matrix and exchange those rows of the identity matrix to get the required permutation matrix
 
