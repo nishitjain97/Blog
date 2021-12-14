@@ -18,7 +18,7 @@ lastmod: '2021-05-01'
 
 ## Linear Algebra and Data Science
 
-- A lot of the mathematics behind Data Science concepts require understanding of linear algebra
+- A lot of the mathematics behind Data Science concepts requires an understanding of linear algebra
 
 - Some examples are:
 

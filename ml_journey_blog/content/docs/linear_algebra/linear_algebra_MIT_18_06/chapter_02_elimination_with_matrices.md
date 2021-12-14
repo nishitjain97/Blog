@@ -66,7 +66,7 @@ x + 2y + z = 2 \\
         \]
         </div>
 
-    2. Eliminate coefficient of $x$ from all other rows **below the pivot row** by adding scalar multiples of row 1 such that coefficient of $x$ of other rows becomes $0$
+    2. Eliminate coefficient of $x$ from all other rows **below the pivot row** by adding scalar multiples of row 1 such that coefficient of $x$ in other rows becomes $0$
 
         - $R2 = R2 - 3 * R1$
 
@@ -131,21 +131,21 @@ x + 2y + z = 2 \\
      - 
      <div>
      \[
-         5z = -10 \implies z = -2 \\
-         2y - 2z = 6 \implies y = 1 \\
-         x + 2y + z = 2 \implies x = 2
+         \text{Row 3: } 5z = -10 \implies z = -2 \\
+         \text{Row 2: }2y - 2z = 6 \implies y = 1 \\
+         \text{Row 1: }x + 2y + z = 2 \implies x = 2
      \]
      </div>
 
      - Solving system in reverse order as system is triangular
 
-- **Note:** We do not use $0$ pivot. If $0$ comes on the pivot position, we exchange the row with the row below and continue with the process
+- **Note:** We do not use $0$ pivot. If $0$ comes on the pivot position, we exchange the row with one of the rows below and continue with the process
 
 - **Note:** In case we are not able to get any non-zero pivot even with row exchange, it implies that the matrix is non-invertible
 
 ## Matrix Multiplication
 
-- Let there be a matrix $A$, a column vector $C$ and a row vector $R$
+- Let there be a matrix $A$, a column vector $C$ and a row vector $R$ (with appropriate shapes for matrix multiplication)
 
 - $A * C$ = Column Vector
 
