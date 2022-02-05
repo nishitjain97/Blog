@@ -30,7 +30,7 @@ lastmod: '2021-03-02'
 
 - E.g.
 
-    - 
+    - &nbsp; 
     
     <div>
     <img src="/docs/linear_algebra/linear_algebra_mit_18_06/graph_network.png" style="height:100px;margin:auto;">

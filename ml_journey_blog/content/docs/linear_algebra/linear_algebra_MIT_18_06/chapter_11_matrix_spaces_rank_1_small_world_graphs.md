@@ -44,7 +44,7 @@ lastmod: '2021-03-02'
 
 - Solving a differential equation such as
 
-    - 
+    - &nbsp; 
     <div>
     \[
         \frac{d^2y}{dx^2} + y = 0
@@ -69,7 +69,7 @@ lastmod: '2021-03-02'
 
 - E.g.
 
-    - 
+    - &nbsp; 
     
     <div>
     \[

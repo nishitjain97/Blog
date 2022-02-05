@@ -116,7 +116,7 @@ lastmod: '2021-03-02'
 
 - Solving multiple systems at once, i.e., using Gauss' idea of augmented matrix, but tagging along right hand sides of all the systems
 
-    - 
+    - &nbsp; 
     <div>
     \[
         \begin{bmatrix}
@@ -130,7 +130,7 @@ lastmod: '2021-03-02'
 
     - Performing Gauss elimination first downwards to get upper triangular matrix and then upwards to convert $A$ to $I$ will turn augmented $I$ into $A^{-1}$
 
-    - 
+    - &nbsp; 
     <div>
     \[
         \begin{bmatrix}

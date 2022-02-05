@@ -55,7 +55,7 @@ x + 2y + z = 2 \\
 
         - We are selecting the coefficient of $x$ in the first row and will use that value to eliminate $x$ from all other rows
 
-        - 
+        - &nbsp;
         <div>
         \[
             A = \begin{bmatrix}
@@ -70,7 +70,7 @@ x + 2y + z = 2 \\
 
         - $R2 = R2 - 3 * R1$
 
-        - 
+        - &nbsp; 
         <div>
         \[
             A = \begin{bmatrix}
@@ -85,7 +85,7 @@ x + 2y + z = 2 \\
 
         - $R3 = R3 - 2 * R2$
 
-        - 
+        - &nbsp; 
         <div>
         \[
             \begin{bmatrix}
@@ -98,7 +98,7 @@ x + 2y + z = 2 \\
 
     4. Select the third pivot element
 
-        - 
+        - &nbsp; 
         <div>
         \[
             U = \begin{bmatrix}
@@ -115,7 +115,7 @@ x + 2y + z = 2 \\
 
         - $B$ can be latched on with $A$ in the form of an augmented matrix $\begin{bmatrix}A | B \end{bmatrix}$ to get to $\begin{bmatrix}U | C \end{bmatrix}$
 
-        - 
+        - &nbsp; 
         <div>
         \[
             C = \begin{bmatrix}
@@ -128,7 +128,7 @@ x + 2y + z = 2 \\
 
     6. Back-substitution will be done to solve $UX = C$
 
-     - 
+     - &nbsp; 
      <div>
      \[
          \text{Row 3: } 5z = -10 \implies z = -2 \\
@@ -169,7 +169,7 @@ x + 2y + z = 2 \\
 
         - We are selecting the coefficient of $x$ in the first row and will use that value to eliminate $x$ from all other rows
 
-        - 
+        - &nbsp; 
         <div>
         \[
             A = \begin{bmatrix}
@@ -184,7 +184,7 @@ x + 2y + z = 2 \\
 
         - Here, we can write the step $R2 = R2 - 3 * R1$ in the form of an elimination matrix as
 
-        - 
+        - &nbsp; 
         <div>
         \[
             E_{2, 1} = \begin{bmatrix}
@@ -216,7 +216,7 @@ x + 2y + z = 2 \\
 
         - Similarly, $R3 = R3 - 2 * R2$ can be represented as
 
-        - 
+        - &nbsp; 
         <div>
         \[
             E_{3, 3} = \begin{bmatrix}
@@ -234,7 +234,7 @@ x + 2y + z = 2 \\
             - Second row => 0 * $A_{1, :}$ + 1 * $A_{2, :}$ + 0 * $A_{3, :}$
             - Third row => 0 * $A_{1, :}$ + -2 * $A_{2, :}$ + 1 * $A_{3, :}$
 
-        - 
+        - &nbsp; 
         <div>
         \[
             \begin{bmatrix}
@@ -247,7 +247,7 @@ x + 2y + z = 2 \\
 
     4. Select the third pivot element
 
-        - 
+        - &nbsp; 
         <div>
         \[
             U = \begin{bmatrix}

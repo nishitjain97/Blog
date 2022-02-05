@@ -16,7 +16,7 @@ lastmod: '2021-03-02'
 
     - **Note:** The steps taken for elimination (row operations) do not change the null space
 
-- 
+- &nbsp; 
 <div>
 \[
     A = \begin{bmatrix}
@@ -29,7 +29,7 @@ lastmod: '2021-03-02'
  
 - Performing elimination on $A$, we get $U$
 
-    - 
+    - &nbsp; 
     <div>
     \[
         U = \begin{bmatrix}
@@ -60,7 +60,7 @@ lastmod: '2021-03-02'
 
         - We assign $x_2 = 0$ and $x_4 = 1$ first to get
 
-            - 
+            - &nbsp; 
             <div>
             \[
                 c_1\begin{bmatrix}
@@ -71,7 +71,7 @@ lastmod: '2021-03-02'
 
         - We assign $x_2 = 1$ and $x_4 = 0$ to get
 
-          - 
+          - &nbsp; 
           <div>
           \[
               c_2\begin{bmatrix}
