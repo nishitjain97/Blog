@@ -147,13 +147,13 @@ x + 2y + z = 2 \\
 
 - Let there be a matrix $A$, a column vector $C$ and a row vector $R$ (with appropriate shapes for matrix multiplication)
 
-- $A * C$ = Column Vector
+- $A * C$ gives a column vector
 
     - We are taking sum of columns of $A$ in the proportion of scalars in $C$ to get a column vector
 
-- $R * A$ = Row Vector
+- $R * A$ gives a row vector
 
-    - We are taking sum of rows of $A$ in the proportion of scalars in $R$ to get a row vectors
+    - We are taking sum of rows of $A$ in the proportion of scalars in $R$ to get a row vector
 
 - **Note:** We need to keep an eye on what matrix multiplication does to vectors
 
@@ -195,11 +195,21 @@ x + 2y + z = 2 \\
         \]
         </div>
 
-        - $E_{2, 1}$ could be understood as:
+        - $E_{2, 1}$ can be understood as:
 
             - The subscript $\\{2, 1\\}$ implies we are fixing pivot at position $\(2, 1\)$ 
             - First row => 1 * $A_{1, :}$ + 0 * $A_{2, :}$ + 0 * $A_{3, :}$
+
+                - This can be read as: take $1$ times Row 1 of $A$, add $0$ times Row 2 of $A$ and then add $0$ times Row 3 of $A$
+            
+                - $A_{k, :}$ implies taking the $k$th row of $A$ 
+                
+                - To take the $k$th column, we will use $A_{:, k}$
+
             - Second row => -3 * $A_{1, :}$ + 1 * $A_{2, :}$ + 0 * $A_{3, :}$
+
+                - This can be read as: tak $-3$ times Row 1 of $A$, add $1$ times Row 2 of $A$ and then add $0$ times Row 3 of $A$
+
             - Third row => 0 * $A_{1, :}$ + 0 * $A_{2, :}$ + 1 * $A_{3, :}$
 
     3. Select the second pivot element and eliminate coefficients from all rows **below the pivot row**
@@ -217,7 +227,7 @@ x + 2y + z = 2 \\
         \]
         </div>
 
-        - $E_{3, 3}$ could be understood as:
+        - $E_{3, 3}$ can be understood as:
 
             - The subscript $\\{3, 3\\}$ implies we are fixing pivot at position $\(3, 3\)$ 
             - First row => 1 * $A_{1, :}$ + 0 * $A_{2, :}$ + 0 * $A_{3, :}$
@@ -254,7 +264,7 @@ x + 2y + z = 2 \\
 
     - $E_{3, 3}(E_{2, 1}A) = U \\ \implies (E_{3, 3}E_{2, 1})A = U $
 
-- There's another type of elementary matrix, called permutation matrix
+- There's another type of elementary matrix, called permutation matrix, used to exchange rows or columns
 
     - These can be formed by doing the target operation on an identity matrix
 

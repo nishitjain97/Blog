@@ -24,13 +24,13 @@ lastmod: '2021-03-02'
 
 ### Method 2: Column-wise multiplication
 
-- Columns of $C$ are combinations of columns of $A$ in the proportion of a column of $B$
+- Each column of $C$ is a combination of all columns of $A$ taken in the proportion of the corresponding column of $B$
 
 - $C_{:, j}$ comes from multiplying $A$ with $B_{:, j}$
 
 ### Method 3: Row-wise multiplication
 
-- Rows of $C$ are combination of rows of $B$ in the proportion of a row of $A$
+- Each row of $C$ is a combination of all rows of $B$ taken in the proportion of the corresponding row of $A$
 
 - $C_{i, :}$ comes from multiplying $A_{i, :}$ with $B$.
 

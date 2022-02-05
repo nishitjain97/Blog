@@ -22,9 +22,15 @@ lastmod: '2021-03-02'
 
     - This gives us $(A^{-1})^T = (A^T)^{-1}$
 
+## Matrix Factorization
+
+- It is the decomposition of a matrix into a product of matrices
+
+- It finds usage in solving different classes of problems, ranging from dimensionality reduction to recommender systems
+
 ## A = LU
 
-- This is the most basic factorization of a matrix
+- This is the most basic factorization of a matrix and helps in understanding the matrix $A$
 
 - Using elimination, we go from $A \rightarrow U$
 
@@ -51,7 +57,7 @@ lastmod: '2021-03-02'
     \]
     </div>
 
-    - Then, from $A = LU$ and $A = E^{-1}U \implies L = E^{-1}$
+    - Then, to get $A = LU$, we can multiply both sides by $E_{2, 1}^{-1}$, which makes $A = E^{-1}_{2, 1}U \implies L = E^{-1}_{2, 1}$
     <div>
     \[
         A \;\;\;\;\;\;\;\;\;\;\;\; L \;\;\;\;\;\;\;\;\; U\\
@@ -76,7 +82,7 @@ lastmod: '2021-03-02'
 
 ## Why A = LU over EA = U?
 
-- When performing Gauss elimination, the elimination matrices are made up of multipliers that are used to subtract one row from another
+- When performing Gauss elimination (without row exchanges), the elimination matrices are made up of multipliers that are used to subtract one row from another
 
     - In the previous example, the elimination matrix would become $E = E_{3, 2}E_{3, 1}E_{2, 1}$
 
@@ -144,7 +150,7 @@ lastmod: '2021-03-02'
 
 - For $n \times n$ matrices, there are n! permutation matrices
 
-- Two exchange any two rows, take the identity matrix and exchange those rows of the identity matrix to get the required permutation matrix
+- To exchange any two rows, take the identity matrix and exchange those rows of the identity matrix to get the required permutation matrix
 
 - The inverse of permutation matrix is its transpose
 

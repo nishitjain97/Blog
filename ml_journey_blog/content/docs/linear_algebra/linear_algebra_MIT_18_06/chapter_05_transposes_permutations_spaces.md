@@ -38,19 +38,15 @@ lastmod: '2021-03-02'
 
 ## Vector Spaces
 
-- Space means a bunch or set of vectors
+- A collection of vectors that is closed under linear combination makes a vector space. This entails
 
-    - It has to allow operation of vectors, i.e, it needs to be **closed under linear combination** which entails the following
+    - Addition of two vectors in the collection should result in a vector that is part of the same collection
 
-        - Addition of vectors
+    - Multiplication of a scalar to any vector in the collection should give another vector in that collection
 
-        - Multiplication of vectors with scalars
+- E.g. $R^2$ is a space of all two-dimensional vectors of real numbers
 
-    - If the application of the above mentioned operations keeps us in the set, then it is a vector space
-
-    - E.g. $R^2$ is a space of all two-dimensional vectors of real numbers
-
-    - E.g. $R^3$ is a space of all three-dimensional vectors of real numbers
+- E.g. $R^3$ is a space of all three-dimensional vectors of real numbers
 
 - $0$ vector is present in all vector spaces
 
@@ -104,7 +100,7 @@ lastmod: '2021-03-02'
 
 - We can derive important subspaces from a matrix
 
-#### Type 1: Column Space
+#### Column Space
 
 - We take the columns of a matrix and all their linear combinations to get the **column space**, $C(A)$
 
