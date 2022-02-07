@@ -3,7 +3,7 @@ title: Notes
 # Section you want to display
 section: docs
 # Pages count
-count: 2
+count: 3
 # Options: card, plain and masonry.
 style: card
 
