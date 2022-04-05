@@ -1,33 +1,33 @@
 ---
 title: Statistics
-description: This is an example doc layout of Eureka theme
+description: Notes for Statistics courses.
 toc: true
-authors:
-tags:
-categories:
-series:
-date: '2020-10-16'
-lastmod: '2020-10-16'
+authors: Nishit Jain
+tags: 
+categories: 
+series: 
+date: '2022-02-24'
+lastmod: '2022-02-24'
 ---
 
-This is the root of example doc.
+## What is Statistics?
 
-## Duis vel leo nec mi convallis sodales
+- Statistics is the science concerned with developing and studying methods for collecting, analyzing, interpreting and presenting empirical data. [\[1\]](https://www.stat.uci.edu/what-is-statistics/#:~:text=Statistics%20is%20the%20science%20concerned,interpreting%20and%20presenting%20empirical%20data.&text=Any%20measurement%20or%20data%20collection,number%20of%20sources%20of%20variation.)
 
-Sed efficitur nibh sed euismod dictum. Donec posuere, nisl a egestas dignissim, risus magna placerat tortor, quis tincidunt ipsum erat at nunc. Cras consectetur ex eget tortor fermentum mattis. Nullam sodales sed purus eget ornare. Vestibulum aliquam cursus odio vitae placerat. Etiam vel pharetra diam. Morbi molestie varius tincidunt. Morbi molestie tortor vitae metus venenatis, ut fermentum nisl luctus. Aenean at condimentum lorem, rhoncus dapibus nibh. Donec et dui consequat ipsum ultrices tristique vitae vitae est.
+- It has applications in all scientific fields where it is used to prove research questions using data.
 
-## Sed efficitur ante a tortor euismod
+- The two main statistical methods used in data analysis are
 
-In ornare ultricies sapien in tincidunt. Integer malesuada tellus sed nibh dictum facilisis non sit amet nibh. Vestibulum sed tincidunt ante, nec tincidunt lectus. Pellentesque id dolor ipsum. Sed efficitur tristique mauris eu tristique. Aliquam nec volutpat dolor. Praesent vitae feugiat nibh. Curabitur mollis placerat sem, ut eleifend mi. Sed sed nisl elit. Pellentesque eget elit nec arcu imperdiet imperdiet. Aliquam dictum arcu ac pharetra rutrum.
+    - Descriptive: To describe or summarize features from a set of data, usually using indexes such as mean and standard deviation
 
-### Cras ac diam efficitur
+    - Inferential: To draw conclusions about the underlying properties of a distribution
 
-Donec iaculis bibendum suscipit. Ut egestas ligula vel orci posuere scelerisque. Nam vel elementum nibh, congue tempus sapien. Aliquam luctus ante sit amet urna vehicula hendrerit. Morbi at ante nisl. Sed euismod vel dolor in iaculis. Aliquam lacinia lorem sit amet vestibulum finibus. Nulla facilisi. Vivamus lacinia consectetur hendrerit. Integer commodo a nibh nec rhoncus. Nulla non aliquet erat. Cras vel orci a urna malesuada viverra vel quis nisi. Donec pharetra laoreet ante, vulputate volutpat ante consequat eget. Donec efficitur consequat nisi vitae volutpat. Vestibulum volutpat, odio nec sodales cursus, ligula nulla pellentesque erat, ut iaculis magna lorem non purus. Curabitur efficitur tortor et elit sodales, in lobortis risus feugiat.
+## Statistics and Data Science
 
-### Cras hendrerit nibh non pulvinar consectetur
+- It is one of the three pillars of Data Science, the other two being Computer Science and Business Knowledge
 
-Donec justo diam, auctor et rhoncus a, feugiat in felis. Etiam lectus est, tincidunt iaculis mi et, feugiat rutrum tellus. Ut sit amet tellus vitae nisi faucibus pulvinar non a augue. Etiam auctor porttitor mi, vitae posuere lacus pretium ac. Pellentesque sed ante magna. Proin tempor faucibus risus, vitae tincidunt arcu ultrices egestas. Aenean rutrum purus vel vulputate lobortis. Aenean auctor ipsum quam, eu molestie magna ultricies quis. Phasellus vitae diam erat. Nam at facilisis massa. Nam vulputate nec quam vel iaculis. Maecenas mauris felis, semper vel ultricies eu, interdum condimentum lacus. Mauris quis tincidunt erat, quis efficitur dolor.
+- Statistics is at the core of essential machine learning algorithms
 
-## Quisque vehicula tellus eget nunc molestie
+- It enables capturing and translation of patterns in data into actionable evidence
 
-Phasellus ligula tortor, sodales ac ipsum vel, lobortis lacinia eros. Maecenas et viverra enim, sit amet bibendum risus. Duis a est pulvinar, suscipit diam id, sagittis lectus. Sed vulputate est sed ipsum faucibus tempus. Morbi non varius nibh. Vestibulum vel tincidunt neque. Vestibulum pellentesque sed metus eu gravida. Donec rhoncus, quam in dictum bibendum, diam libero pretium lacus, vitae suscipit diam neque eget arcu. Pellentesque id hendrerit lorem. Curabitur fermentum purus orci, nec ullamcorper dolor consequat at. Suspendisse lectus dolor, efficitur non mollis eget, suscipit ut nisl. Quisque id ex metus. Sed lobortis venenatis lacinia. Sed at lorem leo.
+- 
