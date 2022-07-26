@@ -266,3 +266,897 @@ com.apple.device.var.Whatsapp;
     ```
 
     - First non-comment statement should be package (if available)
+
+    ```
+    // order is important
+    package statement; // atmost one
+    import statement; // any number
+    class / interface / enum; // any number
+    ```
+
+    - Empty file is also a valid Java file
+
+## Class level modifiers
+
+- Used to provide information of the behavior of class to JVM
+
+- The only modifiers for top level classes are:
+
+    - public
+
+    - default
+
+    - final
+
+    - abstract
+
+    - strictfp
+
+- For inner classes, along with the above, additional modifiers are
+
+    - private
+
+    - protected
+
+    - static
+
+```
+private class Test { // CompilerError: modifier private not allowed here
+    public static void main(String[] args) {
+        System.out.println("Hi");
+    }
+}
+```
+
+### public classes
+
+- Can be accessed from anywhere
+
+### default class
+
+- Package level access
+
+- Can be accessed from within the package only
+
+### final modifier
+
+- Applicable for classes, methods and variables
+
+- Final method can not be overriden
+
+- Final classes can not be inherited
+
+    - Every method inside a final class is final
+
+    - Variable inside final class is not necessarily final
+
+- Though final keyword provides security and unique implementation, it can also lead to missing key benefits of OOPs such as inheritance (final classes) and polymorphism (final methods)
+
+### abstract modifier
+
+- Applicable for classes and methods but not for variables
+
+- Abstract methods have only declaration but not implementation
+
+- Abstract methods in parent class give guidelines to child methods which are compulsarily needed to be defined
+
+```
+abstract final void m1(); // CompilerError: illegal combination of modifiers
+```
+
+- Abstract makes illegal combinations with final, native, synchronized, static, private, strictfp (those which take mandatory implementation)
+
+- Abstract classes have partial implementation, preventing formation of objects of those classes
+
+- Abstract class has 0 or more abstract methods
+
+- HttpServlet class is abstract class with 0 abstract methods
+
+- Every adapter class is recommended to be declared abstract, but doesn't contain any abstract method
+
+- Abstract keyword encourages OOP concept
+
+### strictfp
+
+- Strict floating point modifier
+
+- Version 1.2
+
+- For classes and methods, not for variables
+
+- Usually result of floating point arithmetic varies from system to system. To prevent this variance, we use strictfp
+
+- In a strictfp method, all floating point calculations follow IEEE 754 standard
+
+- In a strictfp class, all concrete methods follow IEEE 754 standard
+
+```
+class Test {
+    abstract strictfp void M(); // CompilerError: Illegal combination
+}
+```
+
+```
+abstract strictfp void test {
+    // No error
+}
+```
+
+## Member modifiers
+
+- For methods or variables
+
+### public members
+
+- A public member can be accessed from anywhere as long as the class is also public
+
+```
+package pack1;
+
+class A {
+    public void M() {
+        System.out.println("A");
+    }
+}
+```
+
+```
+package pack2;
+
+import pack1.A; // CompilerError: A not public in pack1, can't be accessed outside its package
+
+class B {
+    public static void main(String[] args) {
+        A a = new A();
+        a.M();
+    }
+}
+```
+
+### default members
+
+- Can be accessed from anywhere inside a package
+
+- Also known as package level modifier
+
+### private members
+
+- Access only within the class
+
+### protected members
+
+- Most misunderstood modifier
+
+- Anywhere in current package and in child classes outside the package
+
+```
+package pack1;
+
+public class A {
+    protected void M1() {
+
+    }
+}
+class B extends A {
+    public static void main(String[] args) {
+        A a = new A();
+        a.M1();
+        B b = new B();
+        b.M1();
+        A a1 = new B();
+        a1.M1();
+    }
+}
+```
+
+```
+package pack2;
+import pack1.A;
+
+class C extends A {
+    public static void main(String[] args) {
+        A a = new A();
+        a.M1(); // CompilerError: M1() has protected access in pack1.A
+        C c = new C();
+        c.M1(); // Executes
+        A a1 = new C();
+        a1.M1(); // CompilerError: M1() has protected access in pack1.A
+    }
+}
+```
+
+- Protected members outside the package can only be accessed using child reference
+
+```
+package pack3;
+import pack1.A;
+
+class C extends A {
+
+}
+
+class D extends C {
+    public static void main(String[] args) {
+        A a = new A();
+        a.M1(); // CE
+
+        C c = new C();
+        c.M1(); // CE
+
+        D d = new D();
+        d.M1(); // Works
+
+        A a1 = new C();
+        a1.M1() // CE
+
+        A a2 = new D();
+        a2.M1() // CE
+
+        C c1 = new D();
+        c1.M1() // CE
+    }
+}
+```
+
+- Outside packages protected members can be accessed in a child class using only that particular class reference
+
+### final variables
+
+#### instance variables
+
+- Instance variable is given default value by compiler, but needs to be initialized explicitly if declared final
+
+- For final instance variables, initialization has to be performed before constructor completion
+
+```
+// At the time of declaration
+class Test {
+    final int x = 10;
+}
+```
+
+```
+// Inside instance block
+class Test {
+    final int x;
+    {
+        x = 10;
+    }
+}
+```
+
+```
+// Inside constructor
+class Test {
+    final int x;
+
+    Test() {
+        x = 10;
+    }
+}
+```
+
+```
+class Test {
+    final int x;
+
+    public void M() {
+        x = 10; // CompilerError: cannot assign a value to final variable
+    }
+}
+```
+
+```
+class Test {
+    final static int x; // CompilerError: variable x might not have been initialized
+}
+```
+
+- For final static variables, initialization is compulsary before class loading completion
+
+```
+// At the time of declaration
+class Test {
+    final static int x = 10;
+}
+```
+
+```
+// Inside static block
+class Test {
+    final static int x;
+    static {
+        x = 10;
+    }
+}
+```
+
+#### local variables
+
+- Do not get default values and only need to be initialized before use
+
+- Only applicable modifier is final
+
+- Formal parameters of a method act as local variables of that method. Hence, can be declared final.
+
+### static modifier
+
+- Modifier applicable for methods and variables, but not classes
+
+- Only for inner classes, called static nested classes, it is applicable
+
+- Static members can be accessed from both static and non-static areas
+
+- Overloading concept is applicable for static methods, including main method, but JVM always class the one with String[] arguments
+
+- Inheritance is also applicable
+
+```
+class P {
+    public static void main(String[] args) {
+        System.out.println("Main");
+    }
+}
+
+class C extends P {
+
+}
+
+// javac P.java
+// java C
+// Main
+```
+
+- If inside a method, if we are not using any instance variables, then it should be declared static
+
+- Abstract static combination is illegal
+
+### synchronized
+
+- Applicable for methods and blocks but not for classes and variables
+
+- To prevent data inconsistancy problems
+
+- Method should compulsarily contain implementation, so can't be used with abstract
+
+### native
+
+- only for methods
+
+- Methods implemented in non-Java languages (mostly C/C++)
+
+- A.k.a. foreign method
+
+- Used
+
+    - To improve the performance of program
+
+    - To communicate with the machine at memory level
+
+    - For legacy non-Java code
+
+- Pseudocode to use native keyword in Java
+
+```
+class Native {
+    static {
+        System.loadLibrary(path); // Load library for native declaration
+    }
+
+    public native void m1(); // Declare native method (No definition as it is in C/C++)
+}
+
+class Test {
+    public static void main(String[] args) {
+        Native n = new Native();
+        n.m1(); // Invoke method
+    }
+}
+```
+
+```
+public native void m1();
+```
+
+```
+public native void m1() {} // CompilerError: native methods can't have a body
+```
+
+- \`abstract native\` combination is illegal as abstract methods do not have implementation whereas native methods have implementation in other language
+
+- \`native strictfp\` is illegal because C/C++ do not follow IEEE standards
+
+- It breaks platform independancy of Java
+
+### transient
+
+- Only for variables
+
+- Used in Serialization context
+
+- At the time of serialization, to meet security constraint, if we do not want to save value of some variable, we should declare it transient
+
+- JVM ignores value of variable and uses default
+
+- transient is opposite of serialization
+
+### volatile
+
+- Only for variables
+
+- Multiple threads working on a variable can cause data inconsistancy. To prevent this, variable is declared volatile, so each thread gets its own copy of variable
+
+- Prevents inconsistance, but makes program very complex
+
+- Should never be used (most deprecated keyword)
+
+- ```volatile final int x = 15; // CompilerError```
+
+<table>
+    <thead>
+        <tr>
+            <th rowspan=2>Modifier</th>
+            <th colspan=2>Class</th>
+            <th rowspan=2>Methods</th>
+            <th rowspan=2>Variables</th>
+            <th rowspan=2>Blocks</th>
+            <th colspan=2>Interfaces</th>
+            <th colspan=2>Enum</th>
+            <th rowspan=2>Constructors</th>
+        </tr>
+        <tr>
+            <th>Outer</th>
+            <th>Inner</th>
+            <th>Outer</th>
+            <th>Inner</th>
+            <th>Outer</th>
+            <th>Inner</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Public</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+            <td>Private</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+            <td>Protected</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+            <td>Default</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+            <td>Final</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Abstract</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Static</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Synchronized</td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Native</td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Strictfp</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+            <td>:heavy_check_mark:</td>
+        </tr>
+        <tr>
+            <td>Transient</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Volatile</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>:heavy_check_mark:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+- Only applicable modifier for
+
+    - local variables is final
+
+    - constructor are public, private, protected and default
+
+## Interfaces
+
+- Any service requirement specification (SRS)
+
+- It defines the set of services expected by the client
+
+- It is 100% abstract class
+
+- Every interface method is always public and abstract
+
+- A class can extend only one class at a time, but can implement any number of interfaces
+
+- An interface can extend any number of interfaces
+
+```
+interface A {
+
+}
+
+interface B{
+
+}
+
+interface C extends A, B {
+
+}
+```
+
+```
+class A extends B implements C, D, E {
+
+}
+```
+
+- Inside interface, following are equivalent
+
+    - ```void m1()```
+
+    - ```public void m1()```
+
+    - ```abstract void m1()```
+
+    - ```public abstract void m1()```
+
+### Interface variables
+
+- To define requirement level constants
+
+- It is always public static final
+
+    - **public** to make it available for every implementation class
+
+    - **static** no object of interface, so access is only static
+
+    - **final** implementation class should not be allowed to change
+
+- Variable should be initialized when class gets loaded. Two ways
+
+    - While declaration
+
+    - In static block
+
+- Static block is not present for interface
+
+```
+interface IF {
+    int x; // CompilerError: '=' expected
+}
+```
+
+```
+interface INF {
+    int x = 10;
+}
+```
+
+```
+class Trial implements INF {
+    public static void main(String[] args) {
+        x = 777; // CompilerError: can not assign value to final variables
+
+        System.out.println(x);
+    }
+}
+```
+
+```
+class Trial2 implements INF {
+    public static void main(String[] args) {
+        
+    }
+}
+```
+
+### Interface Naming Conflicts
+
+#### Method naming conflicts
+
+- Case 1
+
+    - If two interfaces have a method with same signature and return type, then in implementation class, we have to provide only one implementation
+
+    ```
+    interface left {
+        public void m1();
+    }
+
+    interface right {
+        public void m1();
+    }
+
+    class C implements left, right {
+        public void m1() {
+
+        }
+    }
+    ```
+
+    - This is compiled without errors
+
+- Case 2
+
+    ```
+    interface left {
+        public static m1();
+    }
+
+    interface right {
+        public static m1(int i);
+    }
+
+    class C implements left, right {
+        // Overloaded functions
+        public static m1() {
+
+        }
+
+        public static m1(int i) {
+
+        }
+    }
+    ```
+
+    - This will run
+
+- Case 3
+
+    ```
+    interface left {
+        public void m1();
+    }
+
+    interface right {
+        public void m1();
+    }
+    ```
+
+    - It is impossible to implement both interfaces simultaneously, if same signature but return types are non-covariant
+
+#### Variable naming conflict
+
+    ```
+    interface left {
+        int x = 777;
+    }
+
+    interface right {
+        int x = 10;
+    }
+
+    class C implements left, right {
+        public static void main(String[] args) {
+            System.out.println(x); // reference to x is ambiguous
+
+            System.out.println(left.x); // 777
+
+            System.out.println(right.x); // 10
+        }
+    }
+    ```
+
+    - All interface variables are static, so can be used with interface name
+
+#### Marker interface
+
+- Interface having no methods, but by implementing it, an object gains some new ability
+
+- E.g. Serializable (I), Clonable (I), RandomAccess (I), SingleThreadModel (I)
+
+- Also known as ability interface or tag interface
+
+- To decrease work of programmer and for simplicity of coding, work is given to JVM
+
+- For custom marker interface, custom JVM is required
+
+#### Adaptor Class
+
+- A simple Java class that implements an interface with only empty implementation
+
+```
+interface x {
+    m1();
+    m2();
+    ...
+    M1000();
+}
+```
+
+```
+abstract class Adapter implements X {
+    m1() {};
+    m2() {};
+    ...
+    m1000() {};
+}
+
+class Trial extends Adapter {
+    m3() {
+        ...
+    }
+}
+```
+
+- Not a language level system, just a programmers' trick so implementation of just one or more methods of interface can be provided
+
+- Increases length of readability and reduces length of code
+
+#### Interface vs Abstract Class vs Concrete Class
+
+- If there is no knowledge of implementation, we only have requirement specification, then go for **interface**. E.g. Servlet (I)
+
+- If we talk only about partial implementation then go for **abstract class**. E.g. GenericServlet (AC) or HTTPServlet (AC)
+
+- If we have complete implementation and ready to provide service, go for **concrete class**
+
+- **Note:** Though abstract classes can not have objects, constructors are allowed in them. This constructor will be executed for initializing objects of child classes for the attributes in parent class.
+
+<table>
+    <thead>
+        <tr>
+            <th>Interface</th>
+            <th>Abstract Class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Requirements only (no implementation)</td>
+            <td>Partial implementation</td>
+        </tr>
+        <tr>
+            <td>Pure abstract class (every method public abstract)</td>
+            <td>Methods can be concrete</td>
+        </tr>
+        <tr>
+            <td>Not private, protected, static, synchronized, native, final, strictfp methods</td>
+            <td>No restrictions on modifiers</td>
+        </tr>
+        <tr>
+            <td>All variables are public, static, final by default</td>
+            <td>No such restrictions</td>
+        </tr>
+        <tr>
+            <td>Can't be transient or volatile</td>
+            <td>No restrictions</td>
+        </tr>
+        <tr>
+            <td>Variables should be initialized while declaring</td>
+            <td>Not needed</td>
+        </tr>
+        <tr>
+            <td>No static / instance blocks</td>
+            <td>Allowed</td>
+        </tr>
+        <tr>
+            <td>Constructor not allowed</td>
+            <td>Allowed</td>
+        </tr>
+    </tbody>
+</table>
+
+- **Note:** Whenever we are creating child class object, parent and child class constructors will both be used for creating the child class object. Parent class object will not be created.
