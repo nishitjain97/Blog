@@ -346,6 +346,22 @@ List l1 = Collections.synchronizedList(l);
     <img src="/docs/java/core_java_ocjp_scjp/navigable_set_interface.png" style="height:300px;margin:auto;">
 </div>
 
+- Methods:
+
+    - ```floor(e)```: returns highest element <= e
+
+    - ```lower(e)```: returns highest element < e
+
+    - ```ceiling(e)```: returns lowest element >= e
+
+    - ```higher(e)```: returns lowest element > e
+
+    - ```pollFirst()```: remove and return first element
+
+    - ```pollLast()```: remove and return last element
+
+    - ```descendingSet()```: returns NavigableSet in reverse order
+
 #### HashSet
 
 - Hashtable is underlying architecture
@@ -402,6 +418,40 @@ List l1 = Collections.synchronizedList(l);
 
 - **Note:** The previous interfaces are meant for representing a group of individual objects. For group of key-value pairs, we need map.
 
+- From 1.5V onwards, LinkedList also implements Queue(I)
+
+- Methods
+
+    - ```boolean offer(Object o)```: Add object to queue
+
+    - ```Object peek()```: To return head element. Returns null if queue is empty
+
+    - ```Object element()```: To return head element. If queue is empty, RuntimeError: NoSuchElementException
+
+    - ```Object poll()```: Remove and return head element. If empty, return null
+
+    - ```Object remove()```: Remove and return head element. If empty, RuntimeError: NoSuchElementException
+
+#### PriorityQueue
+
+- Queue with priority based insertion
+
+- Can be default or customized sorting order
+
+- No null. Duplicates are allowed
+
+- Constructors:
+
+    - ```PriorityQueue q = new PriorityQueue()```
+
+    - ```PriorityQueue pq = new PriorityQueue(int initCapacity)```
+
+    - ```PriorityQueue pq = new PriorityQueue(int initCapacity, Comparator c)```
+
+    - ```PriorityQueue pq = new PriorityQueue(SortedSet s)```
+
+    - ```PriorityQueue pq = new PriorityQueue(Collection c)```
+
 ### Map(I)
 
 - Not child interface of Collection, but a part of Collections Framework
@@ -416,15 +466,202 @@ List l1 = Collections.synchronizedList(l);
 
 - Methods
 
-    - ```Object put(Object key, Object value)```
+    - ```Object put(Object key, Object value)```: Returns old value when duplicate key is entered, i.e., when another value is added for same key, the new value over-writes the older value. In case key is added for first time, null is returned
 
-### SortedMap(I)
+    - ```void putAll(Map m)```: Add a smaller map to this map
+
+    - ```Object get(Object key)```: Returns null if key is not present
+
+    - ```Object remove(Object key)```
+
+    - ```boolean containsKey(Object key)```
+
+    - ```boolean containsValue(Object value)```
+
+    - ```boolean isEmpty()```
+
+    - ```int size()```
+
+    - ```void clear()```
+
+- Collection views of map
+
+    - ```Set keySet()```
+
+    - ```Collection values()```
+
+    - ```Set entrySet()```
+
+#### Entry(I)
+
+- Inner interface of Map(I) because Entry object cannot exist without a Map
+
+- Methods
+
+    - ```Object getKey()```
+
+    - ```Object getValue()```
+
+    - ```Object setValue(Object key)```
+
+#### HashMap
+
+- Underlying DS is hashtable
+
+- Insertion order not preserved, it is based on hashcode of keys
+
+- Unique keys but values can be duplicated
+
+- Heterogenous keys and values
+
+- Only one null key, any number of null values
+
+- Implements Serializable and Cloneable, not RandomAccess
+
+- Used when searching is the most frequent job
+
+- Constructors
+
+    - ```HashMap m = new HashMap```: Initial capacity = 16 and fill ratio is 0.75
+
+    - ```HashMap m = new HashMap(int initCapacity)```
+
+    - ```HashMap m = new HashMap(int initCapacity, float fillRatio)```
+
+    - ```HashMap m = new HashMap(Map m1)```
+
+|HashMap|Hashtable|
+|---|---|
+|Not synchronized|Synchronized|
+|Not thread safe|Thread safe|
+|Higher performance|Lower performance|
+|null key and values allowed|Gives CompilerError: NullPointerException|
+|Not legacy (1.2V)| Legacy(1.0V)|
+
+- **Note:** To get a synchronized version of hashmap
+
+```
+HashMap m = new HashMap();
+Map m1 = Collections.synchronizedMap(m);
+```
+
+#### LinkedHashMap
+
+- Child of HashMap. Same as HashMap (methods and constructors)
+
+- Underlying DS is hybrid of LinkedList and Hashtable
+
+- Insertion order is preserved
+
+- V1.4
+
+- Commonly used for cache based applications
+
+#### IdentityHashMap
+
+- Child of HashMap. Methods and constructors same as HashMap
+
+- Normally, to check for duplicate keys in HashMap, JVM uses .equals() method for contenet comparison. In IdentityHashMap, HVM uses '==' operator for reference comparison
+
+#### WeakHashMap
+
+- Same as HashMap, except one key difference
+
+- For HashMap, if an object associated with HashMap does not have a reference, it is not eligible for garbage collection.
+
+- For WeakHashMap, no reference object associated with it is eligible for garbage collection
+
+#### SortedMap(I)
 
 - Child interface of map
 
 - To store key-value pairs according to sorted order of keys. Value never participates in sorting
 
-### NavigableMap(I)
+- Methods
+
+    - ```Object firstKey()```
+
+    - ```Object lastKey()```
+
+    - ```SortedMap headMap(Object key)```
+
+    - ```SortedMap tailMap(Object key)```
+
+    - ```SortedMap subMap(Object key1, Object key2)```
+
+    - ```Comparator comparator()```
+
+#### TreeMap
+
+- Underlying data structure in Red-Black trees
+
+- Keys should be homogeneous and comparable for default sorting order, and can be heterogeneous for custom sorting order (comparator)
+
+- Constructors
+
+    - ```TreeMap t = new TreeMap()```
+
+    - ```TreeMap t = new TreeMap(Comparator c)```
+
+    - ```TreeMap t = new TreeMap(Map m)```
+
+    - ```TreeMap t = new TreeMap(SortedMap m )```
+
+#### Hashtable
+
+- Underlying DS is a hash table
+
+- Insertion order not preserved, it is based on hash code of keys
+
+- Values can be duplicated
+
+- Heterogenous allowed, null not allowed
+
+- Serializable and Cloneable, but not RandomAccess
+
+- Synchronized so thread-safe
+
+- Best for frequent search
+
+- Constructors
+
+    - ```Hashtable h = new Hashtable()```: default capacity = 11 and fill ratio = 0.75
+
+    - ```Hashtable h = new Hashtable(int initCapacity)```
+
+    - ```Hashtable h = new Hashtable(int initCapcity, float fillRatio)```
+
+    - ```Hashtable h = new Hashtable(Map m)```
+
+- **Note:** The output of hash table is read top to bottom, right to left from the hash table
+
+#### Properties
+
+- Anything that changes frequently is not recommended to be hard-coded because any change requires re-compilation, re-building, re-deployment and sometimes restart of server
+
+- We can overcome by storing variable things in properties file
+
+- Any change in properties requires only re-deployment of application
+
+- In other Map types, key and value can be any type, but in Properties, key-value should be String only
+
+- Constructors
+
+    - ```Properties p = new Properties()```
+
+- Methods
+
+    - ```String getProperty(String pName)```
+
+    - ```String setProperty(String pName, String value)```
+
+    - ```Enumeration propertyNames()```
+
+    - ```void load(InputStream is)```
+
+    - ```void store(OutputStream os, String comment)```
+
+#### NavigableMap(I)
 
 - Child interface of SortedMap, used for navigation of maps
 
@@ -445,6 +682,22 @@ List l1 = Collections.synchronizedList(l);
     - Hashtable(C)
 
     - Properties(C)
+
+- Methods:
+
+    - ```floorKey(e)```
+
+    - ```lowerKey(e)```
+
+    - ```ceilingKey(e)```
+
+    - ```higherKey(e)```
+
+    - ```pollFirstEntry()```
+
+    - ```pollLastEntry()```
+
+    - ```descendingMap()```
 
 
 ### Enumeration
@@ -551,8 +804,163 @@ List l1 = Collections.synchronizedList(l);
 
         - Returns 0 if obj1 = obj2
 
-        - Returns -v if obj1 < obj2
+        - Returns -ve if obj1 < obj2
 
     - ```public boolean equals(Object obj)```
 
-- Implementation of Comparator(I) requires implementation of only compare() method because equals() is dummy as its implementation is in Object class, which is the parent
+- Implementation of Comparator(I) requires implementation of only compare() method because equals() is dummy as its implementation is in Object class, which is the parent.
+
+### Collections
+
+- Defines utility methods for Collection objects
+
+- Sorting
+
+    - ```public static void sort(List l)```: Default natural sorting order. Hence, elements should be homogeneous and Comparable. Also, there should be no null element
+
+    - ```public static void sort(List l, Comparator c)```: Customized sorting
+
+- Searching:
+
+    - ```public static int binarySearch(List l, Object target)```: Returns index where element is present. Returns insertion point if element is not present. Insertion point is the spot where target should have been present, denoted by -1, -2, -3, ...,positions
+
+    - ```public static int binarySearch(List l, Object target, Comparator c)```: For customized searching
+
+    - **Note:** These methods will use binary search internally. If list is not sorted, we will get unpredictable results. For n elements
+
+        - Successful search results: 0 to n-1
+
+        - Unsuccessful search results: (-n+1) to -1
+
+        - Total range = (-n+1) to (n-1)
+
+- Reversing
+
+    - ```public static void reverse(List l)```: To reverse order of elements in a list
+
+    - ```public static Comparator reverseOrder(Comparator c)```: To get reversed Comnparator
+
+### Arrays
+
+- A utility class that defines several utility methods for array objects
+
+- Sorting
+
+    - ```public static void sort(primitive[] p)```: Natural sorting order
+
+    - ```public static void sort(Object[] o)```: Natural sorting order
+
+    - ```public static void sort(Object[] o, Comparator c)```: Customized sorting
+
+- Searching
+
+    - ```public static int binarySearch(primitive[] p, primitive target)```
+
+    - ```public static int binarySearch(Object[] o, Object target)```
+
+    - ```public static int binarySearch(Object[] o, Object target, Comparator c)```
+
+- Conversion
+
+    - ```public static List asList(Object[] o)```: Viewing existing arrays as list, i.e., list is not created
+
+    ```
+    String[] s = {"a", "b"};
+    List l = Arrays.asList(s);
+    ```
+
+    - **Note:** Since array is fixed in length, we cannot use List reference to expand or shrink array. We'll get RuntimeError: UnsupportedOperationException
+
+    - **Note:** Since Arrays are homogeneous, if we try to insert heterogeneous objects using List reference, we get RuntimeError: ArrayStoreException
+
+### Concurrent Collections
+
+- Traditionally, Collection is not threadsafe
+
+- Even if we use threadsafe Collection, there are performance problems
+
+- During iteration by one thread, if any other thread modifies the Collection, we get RuntimeError: ConcurrentModificationException
+
+- Hence, we need Concurrent Collections. They solve all the above problems
+
+#### ConcurrentMap(I)
+
+<div>
+    <img src="/docs/java/core_java_ocjp_scjp/concurrent_map.png" style="height:300px;margin:auto;">
+</div>
+
+- Contains all the methods of Map(I)
+
+- Methods
+
+    - ```Object putIfAbset(Object key, Object value)```: In put() method, if key already present, old value is replaced by a new value. In putIfAbsent(), if key already resent, value will not be changed and old value will be returned
+
+    - ```boolean remove(Object key, Object value)```: Removes an entry only if both key and values match
+
+    - ```boolean replace(Object key, Object oldValue, Object newValue)```
+
+#### ConcurrentHashMap
+
+- Since a HashMap uses buckets to store key-value pairs, Object level lock is needed by thread to modify it.
+
+- However, in ConcurrentHashMap, we have bucket level locks. Hence, if one thread is modifying one bucket, other threads are allowed to work on other buckets
+
+- **Note:** Concurrency level is the number of buckets that can be updated simultaneously
+
+- For reading, no lock is required
+
+- Constructors
+
+    - ```ConcurrentHashMap m = new ConcurrentHashMap()```: Default capacity = 16, default fill ratio = 0.75 and concurrency level = 16
+
+    - ```ConcurrentHashMap m = new ConcurrentHashMap(int initCapacity)```
+
+    - ```ConcurrentHashMap m = new ConcurrentHashMap(int initCapacity, float fillRatio)```
+
+    - ```ConcurrentHashMap m = new ConcurrentHashMap(int initCapacity, float fillRatio, int concurrencyLevels)```
+
+    - ```ConcurrentHashMap m = new ConcurrentHashMap(Map m)```
+
+#### CopyOnWriteArrayList
+
+<div>
+    <img src="/docs/java/core_java_ocjp_scjp/cowal.png" style="height:300px;margin:auto;">
+</div>
+
+- It is the threadsafe version of ArrayList present in concurrent package
+
+- When multiple threads are working on a single object, any thread that is performing a write operation would get its own copy of the object. The different copies would later by synced together with the original by the JVM automatically
+
+- Preferred when more read operations are occurring compared to write
+
+- Normal ArrayList has fast-fail iterator, while COWAL has fail-safe iterator
+
+- COWAL can not perform remove operation using iterator, we get RuntimeError: UnsupportedOperationException
+
+- Constructors
+
+    - ```COWAL l = new COWAL()```
+
+    - ```COWAL l = new COWAL(Collection c)```
+
+    - ```COWAL l = new COWAL(Object[] o)```
+
+- Methods
+
+    - ```boolean addIfAbsent(Object o)```
+
+    - ```int addAllAbsent(Collection c)```
+
+#### CopyOnWriteArraySet
+
+<div>
+    <img src="/docs/java/core_java_ocjp_scjp/cowas.png" style="height:300px;margin:auto;">
+</div>
+
+- Works same as COWAL, only difference is that this is a Set
+
+- Constructors
+
+    - ```COWAS c = new COWAS()```
+
+    - ```COWAS c = new COWAS(Collection c)```
